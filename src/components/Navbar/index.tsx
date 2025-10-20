@@ -6,24 +6,46 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from 'assets/logo.png';
+import logoWhite from 'assets/logo-white.png';
 import {
   Drawer,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  Stack
+  Stack,
+  Select,
+  MenuItem,
+  FormControl
 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Icon } from '@iconify/react';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { Mode } from 'components/App';
+import { useTranslation } from 'react-i18next';
 
 interface NavbarProps {
-  onSwitchTheme: () => void;
+  mode: Mode;
+  onChangeMode: () => void;
 }
+const languages = [
+  { code: 'en', label: 'English' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+  { code: 'pt', label: 'Português' },
+  { code: 'ja', label: '日本語' },
+  { code: 'hi', label: 'हिंदी' },
+  { code: 'nl', label: 'Nederlands' },
+  { code: 'ru', label: 'Русский' },
+  { code: 'zh', label: '中文' }
+];
 
-const Navbar: React.FC<NavbarProps> = ({ onSwitchTheme }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  mode,
+  onChangeMode: onChangeMode
+}) => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -31,13 +53,64 @@ const Navbar: React.FC<NavbarProps> = ({ onSwitchTheme }) => {
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
+
+  const handleLanguageChange = (event: any) => {
+    const newLanguage = event.target.value;
+    i18n.changeLanguage(newLanguage);
+    localStorage.setItem('lang', newLanguage);
+  };
+
   const navItems: { label: string; path: string }[] = [
     // { label: 'Features', path: '/features' }
     // { label: 'About Us', path: '/about-us' }
   ];
 
+  const languageSelector = (
+    <FormControl size="small" sx={{ minWidth: 120 }}>
+      <Select
+        value={i18n.language}
+        onChange={handleLanguageChange}
+        displayEmpty
+        sx={{
+          color: 'inherit',
+          '& .MuiSelect-icon': {
+            color: 'inherit'
+          },
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'transparent'
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'transparent'
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'transparent'
+          }
+        }}
+      >
+        {languages.map((lang) => (
+          <MenuItem key={lang.code} value={lang.code}>
+            {lang.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+
   const buttons: ReactNode[] = [
-    <DarkModeIcon onClick={onSwitchTheme} style={{ cursor: 'pointer' }} />,
+    languageSelector,
+    <Icon
+      key={mode}
+      onClick={onChangeMode}
+      style={{ cursor: 'pointer' }}
+      fontSize={30}
+      icon={
+        mode === 'dark'
+          ? 'ic:round-dark-mode'
+          : mode === 'light'
+            ? 'ic:round-light-mode'
+            : 'ic:round-contrast'
+      }
+    />,
     <Icon
       onClick={() => window.open('https://discord.gg/SDbbn3hT4b', '_blank')}
       style={{ cursor: 'pointer' }}
@@ -54,7 +127,10 @@ const Navbar: React.FC<NavbarProps> = ({ onSwitchTheme }) => {
     ></iframe>,
     <Button
       onClick={() => {
-        window.open('https://buymeacoffee.com/iib0011', '_blank');
+        window.open(
+          'https://drive.google.com/file/d/1-r9-rDYnDJic9dnDywKTAsueehIAVp5F/view?usp=sharing',
+          '_blank'
+        );
       }}
       sx={{ borderRadius: '100px' }}
       variant={'contained'}
@@ -62,11 +138,11 @@ const Navbar: React.FC<NavbarProps> = ({ onSwitchTheme }) => {
         <Icon
           style={{ cursor: 'pointer' }}
           fontSize={25}
-          icon={'mdi:heart-outline'}
+          icon={'hugeicons:job-search'}
         />
       }
     >
-      Buy me a coffee
+      {t('navbar.hireMe')}
     </Button>
   ];
   const drawerList = (
@@ -91,17 +167,22 @@ const Navbar: React.FC<NavbarProps> = ({ onSwitchTheme }) => {
       sx={{
         background: 'transparent',
         boxShadow: 'none',
-        color: 'text.primary'
+        color: 'text.primary',
+        pt: 2
       }}
     >
       <Toolbar
         sx={{
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          mx: { md: '50px', lg: '150px' }
         }}
       >
         <Link to="/">
-          <img src={logo} width={isMobile ? '80px' : '150px'} />
+          <img
+            src={theme.palette.mode === 'light' ? logo : logoWhite}
+            width={isMobile ? '120px' : '200px'}
+          />
         </Link>
         {isMobile ? (
           <>

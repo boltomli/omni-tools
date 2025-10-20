@@ -1,3 +1,4 @@
+import { tool as stringHiddenCharacterDetector } from './hidden-character-detector/meta';
 import { tool as stringRemoveDuplicateLines } from './remove-duplicate-lines/meta';
 import { tool as stringRotate } from './rotate/meta';
 import { tool as stringQuote } from './quote/meta';
@@ -16,6 +17,10 @@ import { tool as stringRepeat } from './repeat/meta';
 import { tool as stringTruncate } from './truncate/meta';
 import { tool as stringBase64 } from './base64/meta';
 import { tool as stringStatistic } from './statistic/meta';
+import { tool as stringCensor } from './censor/meta';
+import { tool as stringPasswordGenerator } from './password-generator/meta';
+import { tool as stringEncodeUrl } from './url-encode/meta';
+import { tool as StringDecodeUrl } from './url-decode/meta';
 
 export const stringTools = [
   stringSplit,
@@ -35,5 +40,10 @@ export const stringTools = [
   stringRotate,
   stringRot13,
   stringBase64,
-  stringStatistic
+  stringStatistic,
+  stringCensor,
+  stringPasswordGenerator,
+  stringEncodeUrl,
+  StringDecodeUrl,
+  stringHiddenCharacterDetector
 ];

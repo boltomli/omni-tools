@@ -1,4 +1,8 @@
 import { UpdateField } from '@components/options/ToolOptions';
+import { getToolsByCategory } from '@tools/index';
+import { ToolCategory } from '@tools/defineTool';
+import { I18nNamespaces, validNamespaces } from '../i18n';
+import { TFunction } from 'i18next';
 
 // Here starting the shared values for string manipulation.
 
@@ -105,3 +109,32 @@ export function itemCounter(
   }
   return dict;
 }
+
+export const getToolCategoryTitle = (
+  categoryName: string,
+  t: TFunction<I18nNamespaces[]>
+): string =>
+  getToolsByCategory([], t).find((category) => category.type === categoryName)!
+    .rawTitle;
+
+// Type guard to check if a value is a valid I18nNamespaces
+const isValidI18nNamespace = (value: string): value is I18nNamespaces => {
+  return validNamespaces.includes(value as I18nNamespaces);
+};
+
+export const getI18nNamespaceFromToolCategory = (
+  category: ToolCategory
+): I18nNamespaces => {
+  // Map image-related categories to 'image'
+  if (['png', 'image-generic'].includes(category)) {
+    return 'image';
+  } else if (['gif'].includes(category)) {
+    return 'video';
+  }
+  // Use type guard to check if category is a valid I18nNamespaces
+  if (isValidI18nNamespace(category)) {
+    return category;
+  }
+
+  return 'translation';
+};
