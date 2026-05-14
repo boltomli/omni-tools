@@ -6,7 +6,6 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    tsconfigPaths: true,
     alias: {
       fs: 'data:text/javascript,export default {}',
       path: 'data:text/javascript,export default {}',
