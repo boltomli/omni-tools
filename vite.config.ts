@@ -20,5 +20,8 @@ export default defineConfig({
     setupFiles: '.vitest/setup',
     include: ['**/*.test.{ts,tsx}']
   },
+  build: {
+    chunkSizeWarningLimit: 3000
+  },
   worker: { format: 'es' }
 });
