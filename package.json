@@ -24,7 +24,8 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "prepare": "husky install",
     "i18n:pull": "locize download --project-id e7156a3e-66fb-4035-a0f0-cebf1c63a3ba --path ./public/locales",
-    "i18n:sync": "locize sync --project-id e7156a3e-66fb-4035-a0f0-cebf1c63a3ba --path ./public/locales --update-values true --reference-language-only false -compare-modification-time true"
+    "i18n:sync": "locize sync --project-id e7156a3e-66fb-4035-a0f0-cebf1c63a3ba --path ./public/locales --update-values true --reference-language-only false -compare-modification-time true",
+    "build:tauri": "tsc && vite build && tauri build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -39,6 +40,7 @@
     "@mui/material": "^5.18.0",
     "@playwright/test": "^1.58.2",
     "@simplepdf/react-embed-pdf": "^1.10.0",
+    "@tauri-apps/api": "^2.11.0",
     "@types/ffmpeg": "^1.0.7",
     "@types/js-quantities": "^1.6.6",
     "@types/lodash": "^4.17.24",
@@ -96,6 +98,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@iconify/react": "^5.2.1",
+    "@tauri-apps/cli": "^2.11.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^14.3.1",
     "@types/color": "^3.0.6",
@@ -134,5 +137,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": "prettier --write"
-  }
+  },
+  "packageManager": "pnpm@11.1.1+sha512.d1fdf5f73c617b64fa1a56a81c3c8dfe0e966e33a6010aa256b517ae77be21d93e05affc0de1a83b0e4f29d569f68b446ae8f068cd7247c0bb3df0fb4d7bdf9a"
 }
