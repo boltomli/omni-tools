@@ -30,7 +30,7 @@ const FormikListenerComponent = <T,>({
       if (exception instanceof Error) showSnackBar(exception.message, 'error');
       else console.error(exception);
     }
-  }, [values, input, showSnackBar]);
+  }, [values, input, showSnackBar, compute]);
 
   useEffect(() => {
     onValuesChange?.(values);

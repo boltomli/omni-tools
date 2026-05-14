@@ -70,7 +70,8 @@ export default function ConvertToWebp({ title }: ToolComponentProps) {
     console.log('Images are processed');
   };
 
-  const debouncedCompute = useCallback(debounce(compute, 1000), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedCompute = useCallback(debounce(compute, 1000), [compute]);
 
   return (
     <ToolContent

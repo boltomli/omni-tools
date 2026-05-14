@@ -56,18 +56,6 @@ const resolutionOptions: { value: VideoResolution; label: string }[] = [
   { value: 1080, label: '1080p' }
 ];
 
-const presetOptions = [
-  { value: 'ultrafast', label: 'Ultrafast (Lowest Quality, Smallest Size)' },
-  { value: 'superfast', label: 'Superfast' },
-  { value: 'veryfast', label: 'Very Fast' },
-  { value: 'faster', label: 'Faster' },
-  { value: 'fast', label: 'Fast' },
-  { value: 'medium', label: 'Medium (Balanced)' },
-  { value: 'slow', label: 'Slow' },
-  { value: 'slower', label: 'Slower' },
-  { value: 'veryslow', label: 'Very Slow (Highest Quality, Largest Size)' }
-];
-
 export default function CompressVideo({ title }: ToolComponentProps) {
   const { t } = useTranslation('video');
   const [input, setInput] = useState<File | null>(null);
@@ -95,7 +83,8 @@ export default function CompressVideo({ title }: ToolComponentProps) {
     }
   };
 
-  const debouncedCompute = useCallback(debounce(compute, 1000), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedCompute = useCallback(debounce(compute, 1000), [compute]);
 
   const getGroups: GetGroupsType<typeof initialValues> = ({
     values,

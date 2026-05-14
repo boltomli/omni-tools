@@ -113,9 +113,9 @@ export default function ChangeSpeed({
         await ffmpeg.deleteFile(outputName);
 
         setResult(newFile);
-      } catch (err) {
-        console.error(`Failed to process video: ${err}`);
-        throw err;
+      } catch (_err) {
+        console.error(`Failed to process video: ${_err}`);
+        throw _err;
       } finally {
         setLoading(false);
       }

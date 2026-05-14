@@ -446,7 +446,8 @@ export default function QRCodeGenerator({ title }: ToolComponentProps) {
       }
     );
   };
-  const debouncedCompute = useCallback(debounce(compute, 1000), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedCompute = useCallback(debounce(compute, 1000), [compute]);
 
   return (
     <ToolContent

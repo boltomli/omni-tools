@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import ToolContent from '@components/ToolContent';
 import { ToolComponentProps } from '@tools/defineTool';
@@ -34,7 +33,7 @@ export default function MergeVideo({
         type: 'video/mp4'
       });
       setResult(mergedFile);
-    } catch (err) {
+    } catch (_err) {
       setResult(null);
     } finally {
       setLoading(false);

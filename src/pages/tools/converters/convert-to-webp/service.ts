@@ -75,7 +75,7 @@ async function processImage(
     try {
       //@ts-ignore
       bgColor = Color(backgroundColor).rgb().array();
-    } catch (err) {
+    } catch (_err) {
       bgColor = [255, 255, 255]; // Default to white
     }
 

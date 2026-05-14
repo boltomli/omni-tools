@@ -5,10 +5,8 @@ import { ToolComponentProps } from '@tools/defineTool';
 import { compressPdf } from './service';
 import { InitialValuesType, CompressionLevel } from './types';
 import ToolPdfInput from '@components/input/ToolPdfInput';
-import { GetGroupsType } from '@components/options/ToolOptions';
 import ToolFileResult from '@components/result/ToolFileResult';
 import SimpleRadio from '@components/options/SimpleRadio';
-import { CardExampleType } from '@components/examples/ToolExamples';
 import { PDFDocument } from 'pdf-lib';
 import { CustomSnackBarContext } from '../../../../contexts/CustomSnackBarContext';
 import { useTranslation } from 'react-i18next';
@@ -17,40 +15,7 @@ const initialValues: InitialValuesType = {
   compressionLevel: 'low'
 };
 
-const exampleCards: CardExampleType<InitialValuesType>[] = [
-  {
-    title: 'Low Compression',
-    description: 'Minimal quality loss with slight file size reduction',
-    sampleText: '',
-    sampleResult: '',
-    sampleOptions: {
-      compressionLevel: 'low'
-    }
-  },
-  {
-    title: 'Medium Compression',
-    description: 'Balance between file size and quality',
-    sampleText: '',
-    sampleResult: '',
-    sampleOptions: {
-      compressionLevel: 'medium'
-    }
-  },
-  {
-    title: 'High Compression',
-    description: 'Maximum file size reduction with some quality loss',
-    sampleText: '',
-    sampleResult: '',
-    sampleOptions: {
-      compressionLevel: 'high'
-    }
-  }
-];
-
-export default function CompressPdf({
-  title,
-  longDescription
-}: ToolComponentProps) {
+export default function CompressPdf({ title }: ToolComponentProps) {
   const { t } = useTranslation('pdf');
   const [input, setInput] = useState<File | null>(null);
   const [result, setResult] = useState<File | null>(null);
@@ -85,7 +50,7 @@ export default function CompressPdf({
     };
 
     getPdfInfo();
-  }, [input]);
+  }, [input, showSnackBar, t]);
 
   const formatFileSize = (bytes: number): string => {
     if (bytes === 0) return '0 Bytes';

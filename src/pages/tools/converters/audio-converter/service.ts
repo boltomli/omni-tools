@@ -75,7 +75,7 @@ export async function convertAudio(
     try {
       await ffmpeg.deleteFile(inputFileName);
       await ffmpeg.deleteFile(outputFileName);
-    } catch (e) {
+    } catch (_e) {
       // Ignore cleanup errors
     }
   }

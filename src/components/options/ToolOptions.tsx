@@ -22,7 +22,7 @@ export default function ToolOptions<T extends FormikValues>({
   vertical?: boolean;
 }) {
   const { t } = useTranslation();
-  const theme = useTheme();
+  const _theme = useTheme();
   const formikContext = useFormikContext<T>();
 
   // Early return if no groups to display

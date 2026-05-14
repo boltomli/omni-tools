@@ -51,7 +51,7 @@ export default function ToolMultiFileResult({
     URL.revokeObjectURL(url);
   };
 
-  const handleCopy = () => {
+  const _handleCopy = () => {
     if (zipFile) {
       const blob = new Blob([zipFile], { type: zipFile.type });
       const clipboardItem = new ClipboardItem({ [zipFile.type]: blob });

@@ -25,6 +25,7 @@ function Loading() {
       >
         <div className="bounce1" />
         <div className="bounce2" />
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="bounce3" />
       </Box>
     </Box>

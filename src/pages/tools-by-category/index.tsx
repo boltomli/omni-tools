@@ -12,7 +12,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { filterTools, getToolsByCategory } from '../../tools';
 import Hero from 'components/Hero';
 import {
-  getI18nNamespaceFromToolCategory,
+  getI18nNamespaceFromToolCategory as _getI18nNamespaceFromToolCategory,
   getToolCategoryTitle
 } from '@utils/string';
 import { Icon } from '@iconify/react';
@@ -24,7 +24,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Helmet } from 'react-helmet';
 import UserTypeFilter from '@components/UserTypeFilter';
 import { useTranslation } from 'react-i18next';
-import { I18nNamespaces, validNamespaces } from '../../i18n';
+import { I18nNamespaces as _I18nNamespaces, validNamespaces } from '../../i18n';
 import { useUserTypeFilter } from '../../providers/UserTypeFilterProvider';
 
 const StyledLink = styled(Link)(({ theme }) => ({

@@ -4,7 +4,6 @@ import ToolFileResult from '@components/result/ToolFileResult';
 import { changeOpacity } from './service';
 import ToolContent from '@components/ToolContent';
 import TextFieldWithDesc from '@components/options/TextFieldWithDesc';
-import { CardExampleType } from '@components/examples/ToolExamples';
 import { ToolComponentProps } from '@tools/defineTool';
 import { updateNumberField } from '@utils/string';
 import { Box } from '@mui/material';
@@ -31,54 +30,6 @@ const initialValues: InitialValuesType = {
   areaWidth: 100,
   areaHeight: 100
 };
-
-const exampleCards: CardExampleType<InitialValuesType>[] = [
-  {
-    title: 'Semi-transparent PNG',
-    description: 'Make an image 50% transparent',
-    sampleOptions: {
-      opacity: 0.5,
-      mode: 'solid',
-      gradientType: 'linear',
-      gradientDirection: 'left-to-right',
-      areaLeft: 0,
-      areaTop: 0,
-      areaWidth: 100,
-      areaHeight: 100
-    },
-    sampleResult: ''
-  },
-  {
-    title: 'Slightly Faded PNG',
-    description: 'Create a subtle transparency effect',
-    sampleOptions: {
-      opacity: 0.8,
-      mode: 'solid',
-      gradientType: 'linear',
-      gradientDirection: 'left-to-right',
-      areaLeft: 0,
-      areaTop: 0,
-      areaWidth: 100,
-      areaHeight: 100
-    },
-    sampleResult: ''
-  },
-  {
-    title: 'Radial Gradient Opacity',
-    description: 'Apply a radial gradient opacity effect',
-    sampleOptions: {
-      opacity: 0.8,
-      mode: 'gradient',
-      gradientType: 'radial',
-      gradientDirection: 'inside-out',
-      areaLeft: 25,
-      areaTop: 25,
-      areaWidth: 50,
-      areaHeight: 50
-    },
-    sampleResult: ''
-  }
-];
 
 export default function ChangeOpacity({ title }: ToolComponentProps) {
   const [input, setInput] = useState<File | null>(null);

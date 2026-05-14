@@ -81,7 +81,8 @@ export default function TrimVideo({ title }: ToolComponentProps) {
       console.error('Error trimming video:', error);
     }
   };
-  const debouncedCompute = useCallback(debounce(compute, 1000), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedCompute = useCallback(debounce(compute, 1000), [compute]);
   const getGroups: GetGroupsType<typeof initialValues> = ({
     values,
     updateField

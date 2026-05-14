@@ -130,7 +130,13 @@ export default function SumNumbers({ title }: ToolComponentProps) {
     {
       title: t('sum.numberExtraction'),
       component: extractionTypes.map(
-        ({ title, description, type, withTextField, textValueAccessor }) =>
+        ({
+          title,
+          description: _description,
+          type,
+          withTextField,
+          textValueAccessor
+        }) =>
           withTextField ? (
             <RadioWithTextField
               key={type}

@@ -13,7 +13,7 @@ const useUpdateEffect = (effect: EffectCallback, deps?: DependencyList) => {
       isInitialMount.current = false;
     }
     return effect();
-  }, deps);
+  }, [effect, ...(deps ?? [])]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export default useUpdateEffect;

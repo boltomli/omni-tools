@@ -1,7 +1,7 @@
 import { Box, Button, Stack, styled, useTheme } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ToolBreadcrumb from './ToolBreadcrumb';
-import { capitalizeFirstLetter } from '../utils/string';
+import { capitalizeFirstLetter as _capitalizeFirstLetter } from '../utils/string';
 import Grid from '@mui/material/Grid';
 import { Icon, IconifyIcon } from '@iconify/react';
 import { categoriesColors } from '../config/uiConfig';
@@ -11,7 +11,7 @@ import { isBookmarked, toggleBookmarked } from '@utils/bookmark';
 import IconButton from '@mui/material/IconButton';
 import { useTranslation } from 'react-i18next';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { validNamespaces } from '../i18n';
+import { validNamespaces as _validNamespaces } from '../i18n';
 
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: 'white',
@@ -118,7 +118,7 @@ export default function ToolHeader({
               {title}
             </Typography>
             <IconButton
-              onClick={(e) => {
+              onClick={(_e) => {
                 toggleBookmarked(path);
                 setBookmarked(!bookmarked);
               }}

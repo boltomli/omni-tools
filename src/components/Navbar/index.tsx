@@ -65,8 +65,8 @@ const Navbar: React.FC<NavbarProps> = ({
     // { label: 'About Us', path: '/about-us' }
   ];
 
-  const languageSelector = (
-    <FormControl size="small" sx={{ minWidth: 120 }}>
+  const buttons: ReactNode[] = [
+    <FormControl key="language" size="small" sx={{ minWidth: 120 }}>
       <Select
         value={i18n.language}
         onChange={handleLanguageChange}
@@ -93,11 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </MenuItem>
         ))}
       </Select>
-    </FormControl>
-  );
-
-  const buttons: ReactNode[] = [
-    languageSelector,
+    </FormControl>,
     <Icon
       key={mode}
       onClick={onChangeMode}
@@ -112,12 +108,14 @@ const Navbar: React.FC<NavbarProps> = ({
       }
     />,
     <Icon
+      key="discord"
       onClick={() => window.open('https://discord.gg/SDbbn3hT4b', '_blank')}
       style={{ cursor: 'pointer' }}
       fontSize={30}
       icon={'ic:baseline-discord'}
     />,
     <iframe
+      key="github"
       src="https://ghbtns.com/github-btn.html?user=iib0011&repo=omni-tools&type=star&count=true&size=large"
       frameBorder="0"
       scrolling="0"
@@ -126,6 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({
       title="GitHub"
     ></iframe>,
     <Button
+      key="hire-me"
       onClick={() => {
         window.open(
           'https://drive.google.com/file/d/1-r9-rDYnDJic9dnDywKTAsueehIAVp5F/view?usp=sharing',
@@ -155,8 +154,8 @@ const Navbar: React.FC<NavbarProps> = ({
           <ListItemText primary={navItem.label} />
         </ListItemButton>
       ))}
-      {buttons.map((button) => (
-        <ListItem>{button}</ListItem>
+      {buttons.map((button, index) => (
+        <ListItem key={index}>{button}</ListItem>
       ))}
     </List>
   );

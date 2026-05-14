@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
-import * as Yup from 'yup';
 import ToolContent from '@components/ToolContent';
 import { ToolComponentProps } from '@tools/defineTool';
 import { GetGroupsType } from '@components/options/ToolOptions';
@@ -20,14 +19,6 @@ const initialValues: InitialValuesType = {
   start: 0,
   end: 100
 };
-
-const validationSchema = Yup.object({
-  start: Yup.number().min(0, 'Start time must be positive'),
-  end: Yup.number().min(
-    Yup.ref('start'),
-    'End time must be greater than start time'
-  )
-});
 
 export default function VideoToGif({
   title,

@@ -18,7 +18,7 @@ export const sortJson = (text: string, options: InitialValuesType): string => {
   let parsed;
   try {
     parsed = JSON.parse(text);
-  } catch (e) {
+  } catch (_e) {
     throw new Error('Invalid JSON string');
   }
 

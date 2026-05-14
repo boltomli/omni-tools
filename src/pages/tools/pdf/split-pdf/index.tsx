@@ -91,7 +91,7 @@ export default function SplitPdf({ title }: ToolComponentProps) {
           plural: count === 1 ? '' : 's'
         })
       );
-    } catch (error) {
+    } catch (_error) {
       setPageRangePreview('');
     }
   };

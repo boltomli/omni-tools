@@ -81,7 +81,9 @@ export default function CropVideo({ title }: ToolComponentProps) {
   };
 
   // 2 seconds to avoid starting job half way through
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedCompute = useCallback(debounce(compute, 2000), [
+    compute,
     videoDimensions
   ]);
 

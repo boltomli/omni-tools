@@ -86,15 +86,17 @@ export default function SortList({ title }: ToolComponentProps) {
           title: t('sort.inputItemSeparator'),
           component: (
             <Box>
-              {splitOperators.map(({ title, description, type }) => (
-                <SimpleRadio
-                  key={type}
-                  onClick={() => updateField('splitSeparatorType', type)}
-                  title={t(`sort.splitOperators.${type}.title`)}
-                  description={t(`sort.splitOperators.${type}.description`)}
-                  checked={values.splitSeparatorType === type}
-                />
-              ))}
+              {splitOperators.map(
+                ({ title: _title, description: _description, type }) => (
+                  <SimpleRadio
+                    key={type}
+                    onClick={() => updateField('splitSeparatorType', type)}
+                    title={t(`sort.splitOperators.${type}.title`)}
+                    description={t(`sort.splitOperators.${type}.description`)}
+                    checked={values.splitSeparatorType === type}
+                  />
+                )
+              )}
               <TextFieldWithDesc
                 description={t('sort.splitSeparatorDescription')}
                 value={values.splitSeparator}

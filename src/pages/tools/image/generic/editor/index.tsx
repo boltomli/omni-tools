@@ -27,7 +27,7 @@ export default function ImageEditor({ title }: ToolComponentProps) {
     }
   }, []);
 
-  const onCloseEditor = (reason: string) => {
+  const onCloseEditor = (_reason: string) => {
     setIsEditorOpen(false);
     setImageUrl(null);
   };
@@ -35,7 +35,7 @@ export default function ImageEditor({ title }: ToolComponentProps) {
   // Handle save from image editor
   const handleSave: FilerobotImageEditorConfig['onSave'] = (
     editedImageObject,
-    designState
+    _designState
   ) => {
     if (editedImageObject && editedImageObject.imageBase64) {
       // Convert base64 to blob

@@ -6,7 +6,7 @@ export const processImage = async (
   file: File,
   options: InitialValuesType
 ): Promise<File | null> => {
-  const { rotateAngle, rotateMethod } = options;
+  const { rotateAngle } = options;
   if (file.type === 'image/svg+xml') {
     try {
       // Read the SVG file

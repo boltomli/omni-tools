@@ -12,7 +12,7 @@ import SelectWithDesc from '@components/options/SelectWithDesc';
 import TextFieldWithDesc from '@components/options/TextFieldWithDesc';
 import { useTranslation } from 'react-i18next';
 import { addAudioToVideo } from './service';
-import { AudioMode, timingMode, initialValuesType } from './types';
+import { AudioMode, initialValuesType } from './types';
 import debounce from 'lodash/debounce';
 
 const initialValues: initialValuesType = {
@@ -78,14 +78,15 @@ export default function AddAudio({ title }: ToolComponentProps) {
   };
 
   // debounced version for fast option changes
-  const debouncedCompute = useCallback(debounce(compute, 1000), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedCompute = useCallback(debounce(compute, 1000), [compute]);
 
   // automatically recompute whenever video, audio, or options change
   useEffect(() => {
     if (videoInput && audioInput) {
       debouncedCompute(videoInput, audioInput, currentValues);
     }
-  }, [videoInput, audioInput, currentValues]);
+  }, [videoInput, audioInput, currentValues, debouncedCompute]);
 
   const getGroups: GetGroupsType<typeof initialValues> = ({
     values,

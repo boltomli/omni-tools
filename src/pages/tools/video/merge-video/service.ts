@@ -4,7 +4,7 @@ import { fetchFile } from '@ffmpeg/util';
 
 export async function mergeVideos(
   input: MergeVideoInput,
-  options: InitialValuesType
+  _options: InitialValuesType
 ): Promise<MergeVideoOutput> {
   if (!Array.isArray(input) || input.length < 2) {
     throw new Error('Please provide at least two video files to merge.');
@@ -91,7 +91,7 @@ export async function mergeVideos(
         if (testRead && testRead.length > 0) {
           console.log('Concat demuxer method succeeded');
         }
-      } catch (readError) {
+      } catch (_readError) {
         console.log('Concat demuxer method failed to produce output');
       }
     } catch (execError) {

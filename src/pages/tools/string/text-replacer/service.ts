@@ -33,7 +33,7 @@ function replaceTextWithRegexp(
       // Input is a raw pattern - don't escape it
       return text.replace(new RegExp(searchRegexp, 'g'), replaceValue);
     }
-  } catch (err) {
+  } catch (_err) {
     // console.error('Invalid regular expression:', err);
     return text;
   }

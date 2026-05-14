@@ -28,7 +28,7 @@ export default function ToolMultipleAudioInput({
   type
 }: MultiAudioInputComponentProps) {
   const { t } = useTranslation();
-  const theme = useTheme();
+  const _theme = useTheme();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +62,7 @@ export default function ToolMultipleAudioInput({
     onChange(list);
   };
 
-  const reorderList = (sourceIndex: number, destinationIndex: number) => {
+  const _reorderList = (sourceIndex: number, destinationIndex: number) => {
     if (destinationIndex === sourceIndex) {
       return;
     }

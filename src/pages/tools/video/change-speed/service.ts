@@ -2,7 +2,7 @@ import { InitialValuesType } from './types';
 
 export function main(
   input: File | null,
-  options: InitialValuesType
+  _options: InitialValuesType
 ): File | null {
   return input;
 }

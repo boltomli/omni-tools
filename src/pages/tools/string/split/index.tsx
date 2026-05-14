@@ -1,15 +1,11 @@
-import { Box } from '@mui/material';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import ToolTextInput from '@components/input/ToolTextInput';
 import ToolTextResult from '@components/result/ToolTextResult';
 import { compute, SplitOperatorType } from './service';
 import RadioWithTextField from '@components/options/RadioWithTextField';
 import TextFieldWithDesc from '@components/options/TextFieldWithDesc';
-import ToolExamples, {
-  CardExampleType
-} from '@components/examples/ToolExamples';
+import { CardExampleType } from '@components/examples/ToolExamples';
 import { ToolComponentProps } from '@tools/defineTool';
-import { FormikProps } from 'formik';
 import ToolContent from '@components/ToolContent';
 import { useTranslation } from 'react-i18next';
 import { ParseKeys } from 'i18next';

@@ -7,7 +7,6 @@ import { InitialValuesType } from './types';
 import ToolAudioInput from '@components/input/ToolAudioInput';
 import ToolFileResult from '@components/result/ToolFileResult';
 import TextFieldWithDesc from '@components/options/TextFieldWithDesc';
-import RadioWithTextField from '@components/options/RadioWithTextField';
 import { changeAudioSpeed } from './service';
 import { useTranslation } from 'react-i18next';
 
@@ -39,7 +38,7 @@ export default function ChangeSpeed({
     try {
       const newFile = await changeAudioSpeed(input, optionsValues);
       setResult(newFile);
-    } catch (err) {
+    } catch (_err) {
       setResult(null);
     } finally {
       setLoading(false);

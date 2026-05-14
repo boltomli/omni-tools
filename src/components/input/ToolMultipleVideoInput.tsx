@@ -61,7 +61,7 @@ export default function ToolMultipleVideoInput({
     onChange(list);
   };
 
-  const reorderList = (sourceIndex: number, destinationIndex: number) => {
+  const _reorderList = (sourceIndex: number, destinationIndex: number) => {
     if (destinationIndex === sourceIndex) {
       return;
     }
